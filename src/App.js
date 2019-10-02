@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './ValidationComponent/ValidationComponent'
+import './CharComponent/CharComponent'
+import OutputTextLenght from './ValidationComponent/ValidationComponent';
 
 class App extends Component {
 
   state = {
     stringsTracked: [
-    {lengthOfString: 0,stringToBeCounted: 'the Current text'}]
+    {
+      lengthOfString: 0,
+      stringToBeCounted: ''},
+    ],
+    stringToArray:[]
   }
 
   textFieldChangeListener  = (event) => {
@@ -20,12 +27,15 @@ class App extends Component {
     this.setState({stringsTracked: currentState})
   }
 
+
+
   render() {
     return (
       <div className="App">
         <input type = 'text' onChange = {(event) => this.textFieldChangeListener(event)}/>
         <p>{this.state.stringsTracked.stringToBeCounted}</p>
         <p>Length: {this.state.stringsTracked.lengthOfString}</p>
+        <OutputTextLenght textLength = {this.state.stringsTracked.lengthOfString}></OutputTextLenght>
       </div>
     );
   }
